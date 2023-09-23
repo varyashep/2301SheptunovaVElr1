@@ -73,10 +73,9 @@ void deleteFirstElem(Node* start, int& length) // удаление первого элемента
 	delete add;
 	length--;
 
-	printList(start, length);
 }
 
-void addElem(Node* start, Node* end, int& length, int index)
+void addElem(Node* start, Node* end, int& length, int index) // добавление элемента по индексу
 {
 	if (index == 0) { // если элемент хот€т добавить на первое место
 		Node* add = new Node;
@@ -179,9 +178,7 @@ void clearList(Node* start, int& length) // очищение списка
 {
 	Node* del = start->next;
 	while (length != 0) {
-		del = del->next;
-		del->previous = del;
-		length--;
+		deleteFirstElem(start, length);
 	}
 	printList(start, length);
 }
@@ -441,6 +438,7 @@ int main()
 			break;
 		case 4:
 			deleteFirstElem(headMain, lengthMain);
+			printList(headMain, lengthMain);
 			break;
 		case 5:
 			cout << "¬ведите индекс дл€ добавлени€: ";
