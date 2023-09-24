@@ -196,6 +196,13 @@ void replaceElem(Node* start, Node* end, int& length, int index) { // заменить э
 			}
 			add->number = newElem;
 		}
+		else {
+			Node* add = end->previous;
+			for (int i = 1; i < length - index; i++) {
+				add = add->previous;
+			}
+			add->number = newElem;
+		}
 		printList(start, length);
 	}
 	else {
@@ -225,7 +232,7 @@ void reverseList(Node*& start, Node*& end, int& length) // переверот списка
 	printList(start, length);
 }
 
-void insertList(Node* start, Node* end, int& length, bool& insert, Node* startBegin, Node* endBegin, int& lengthBegin, int index) { // вставка другого списка по определенному индексу
+void insertList(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endSecondList, int& lengthSecondList, int index) { // вставка другого списка по определенному индексу
 	if ((index < length) and (index >= 0)) {
 		cout << "«начение элемента по индексу: " << index << ": ";
 
@@ -234,23 +241,23 @@ void insertList(Node* start, Node* end, int& length, bool& insert, Node* startBe
 			for (int i = 0; i < index; i++) {
 				add = add->next;
 			}
-			add->next->previous = endBegin->previous;
-			endBegin->previous->next = add->next;
-			startBegin->next->previous = add;
-			add->next = startBegin->next;
+			add->next->previous = endSecondList->previous;
+			endSecondList->previous->next = add->next;
+			startSecondList->next->previous = add;
+			add->next = startSecondList->next;
 		}
 		else {
 			Node* add = end->previous;
 			for (int i = 1; i < length - index; i++) {
 				add = add->previous;
 			}
-			add->next->previous = endBegin->previous;
-			endBegin->previous->next = add->next;
-			startBegin->next->previous = add;
-			add->next = startBegin->next;
+			add->next->previous = endSecondList->previous;
+			endSecondList->previous->next = add->next;
+			startSecondList->next->previous = add;
+			add->next = startSecondList->next;
 		}
-		length += lengthBegin;
-		insert = true;
+		length += lengthSecondList;
+		inserted = true;
 		printList(start, length);
 	}
 	else {
@@ -258,32 +265,32 @@ void insertList(Node* start, Node* end, int& length, bool& insert, Node* startBe
 	}
 }
 
-void insertListEnd(Node* start, Node* end, int& length, bool& insert, Node* startBegin, Node* endBegin, int& lengthBegin) // вставка второго списка в конце
+void insertListLast(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endLastList, int& lengthSecondList) // вставка второго списка в конце
 {
-	startBegin->next->previous = end->previous;
-	end->previous->next = startBegin->next;
-	endBegin->previous->next = end;
-	end->previous = endBegin->previous;
-	length += lengthBegin;
-	insert = true;
+	startSecondList->next->previous = end->previous;
+	end->previous->next = startSecondList->next;
+	endLastList->previous->next = end;
+	end->previous = endLastList->previous;
+	length += lengthSecondList;
+	inserted = true;
 	printList(start, length);
 }
 
-void insertListBegin(Node* start, Node* end, int& length, bool& insert, Node* startBegin, Node* endBegin, int& lengthBegin) // вставка второго списка в начале
+void insertListFirst(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endSecondList, int& lengthSecondList) // вставка второго списка в начале
 {
-	endBegin->previous->next = start->next;
-	start->next->previous = endBegin->previous;
-	start->next = startBegin->next;
-	startBegin->next->previous = start;
-	length += lengthBegin;
-	insert = true;
+	endSecondList->previous->next = start->next;
+	start->next->previous = endSecondList->previous;
+	start->next = startSecondList->next;
+	startSecondList->next->previous = start;
+	length += lengthSecondList;
+	inserted = true;
 	printList(start, length);
 }
 
-void getFirstEntry(Node* start, Node* end, Node* startBegin, Node* endBegin, int& length) { // индекс первого вхождени€ второго списка в начальный
+void getFirstEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int& length) { // индекс первого вхождени€ второго списка в начальный
 	Node* add = start;
 	int index = 0;
-	while (!(add->next == startBegin->next)) {
+	while (!(add->next == startSecondList->next)) {
 		index += 1;
 		add = add->next;
 	}
@@ -291,11 +298,11 @@ void getFirstEntry(Node* start, Node* end, Node* startBegin, Node* endBegin, int
 	cout << "»ндекс первого вхождени€ списка в список: " << index << endl;
 }
 
-void getLastEntry(Node* start, Node* end, Node* startBegin, Node* endBegin, int& length) // индекс последнего вхождени€ второго списка в начальный
+void getLastEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int& length) // индекс последнего вхождени€ второго списка в начальный
 {
 	Node* add = end;
 	int index = 1;
-	while (!(add->previous == endBegin->previous)) {
+	while (!(add->previous == endSecondList->previous)) {
 		index += 1;
 		add = add->previous;
 	}
@@ -312,6 +319,27 @@ void swap(Node* start, Node* end, int& length, int indexFirst, int indexSecond) 
 	addSecond->number = temp;
 
 	printList(start, length);
+}
+
+void containsSecondList(bool inserted) // проверка на содержание второго списка в основном 
+{
+	if (inserted)
+		cout << "¬ставной список содержитс€ в начальном" << endl;
+	else
+		cout << "¬ставной список не содержитс€ в начальном" << endl;
+}
+
+void checkLength(int length) // проверка на пустоту списка
+{
+	if (length == 0)
+		cout << "—писок пустой"<<endl;
+	else
+		cout << "—писок не пустой"<<endl;
+}
+
+void getLength(int length) // определение длины списка 
+{
+	cout << "ƒлина списка: " << length << endl;
 }
 int main()
 {
@@ -350,7 +378,7 @@ int main()
 	do {
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		cout << "¬ыберите: " << endl;
-		cout << "1. ƒобавить элемент" << endl;
+		cout << "1. ƒобавить элемент в конец" << endl;
 		cout << "2. ƒобавить элемент в начало" << endl;
 		cout << "3. ƒобавить элемент по индексу" << endl;
 		cout << "0. «акончить ввод и перейти к основному списку" << endl;
@@ -461,7 +489,7 @@ int main()
 			delElem(headMain, tailMain, lengthMain, delIndex);
 			break;
 		case 8:
-			cout << "ƒлина списка: " << lengthMain << endl;
+			getLength(lengthMain);
 			break;
 		case 9:
 			clearList(headMain, lengthMain);
@@ -472,12 +500,7 @@ int main()
 			replaceElem(headMain, tailMain, lengthMain, findIndex);
 			break;
 		case 11:
-			if (lengthMain == 0) {
-				cout << "—писок пустой" << endl;
-			}
-			else {
-				cout << "—писок не пустой" << endl;
-			}
+			checkLength(lengthMain);
 			break;
 		case 12:
 			reverseList(headMain, tailMain, lengthMain);
@@ -489,18 +512,13 @@ int main()
 			insertList(headMain, tailMain, lengthMain, inserted, headSecond, tailSecond, lengthSecond, insertIndex);
 			break;
 		case 14:
-			insertListEnd(headMain, tailMain, lengthMain, inserted, headSecond, tailSecond, lengthSecond);
+			insertListLast(headMain, tailMain, lengthMain, inserted, headSecond, tailSecond, lengthSecond);
 			break;
 		case 15:
-			insertListBegin(headMain, tailMain, lengthMain, inserted, headSecond, tailSecond, lengthSecond);
+			insertListFirst(headMain, tailMain, lengthMain, inserted, headSecond, tailSecond, lengthSecond);
 			break;
 		case 16:
-			if (inserted) {
-				cout << "¬ставной список содержитс€ в начальном" << endl;
-			}
-			else {
-				cout << "¬ставной список не содержитс€ в начальном" << endl;
-			}
+			containsSecondList(inserted);
 			break;
 		case 17:
 			if (inserted) {
