@@ -20,9 +20,9 @@ struct Node
 	struct Node* previous;
 };
 
-void printList(Node* start, int& length) // вывод списка
+void printList(Node* start, int& length) // ГўГ»ГўГ®Г¤ Г±ГЇГЁГ±ГЄГ 
 {
-	cout << "Список: " << endl;
+	cout << "Г‘ГЇГЁГ±Г®ГЄ: " << endl;
 	Node* iterator = start->next;
 	for (int i = 0; i < length; i++)
 	{
@@ -32,7 +32,7 @@ void printList(Node* start, int& length) // вывод списка
 	cout << endl;
 }
 
-void addLastElem(Node* adder, Node* start, Node* end, int& length, int toAdd) //добавление элемента в конец списка
+void addLastElem(Node* adder, Node* start, Node* end, int& length, int toAdd) //Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў ГЄГ®Г­ГҐГ¶ Г±ГЇГЁГ±ГЄГ 
 {
 	adder = new Node;
 	adder->number = toAdd;
@@ -44,7 +44,7 @@ void addLastElem(Node* adder, Node* start, Node* end, int& length, int toAdd) //
 
 }
 
-void addFirstElem(Node* adder, Node* start, int& length, int toAdd) // добавление элемента в начало списка
+void addFirstElem(Node* adder, Node* start, int& length, int toAdd) // Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў Г­Г Г·Г Г«Г® Г±ГЇГЁГ±ГЄГ 
 {
 	adder = new Node;
 	adder->number = toAdd;
@@ -56,7 +56,7 @@ void addFirstElem(Node* adder, Node* start, int& length, int toAdd) // добавлени
 
 }
 
-void deleteLastElem(Node* start, Node* end, int& length)  // удаление последнего элемента
+void deleteLastElem(Node* start, Node* end, int& length)  // ГіГ¤Г Г«ГҐГ­ГЁГҐ ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
 {
 	Node* add = end->previous;
 	end->previous = add->previous;
@@ -66,7 +66,7 @@ void deleteLastElem(Node* start, Node* end, int& length)  // удаление последнего
 
 }
 
-void deleteFirstElem(Node* start, int& length) // удаление первого элемента
+void deleteFirstElem(Node* start, int& length) // ГіГ¤Г Г«ГҐГ­ГЁГҐ ГЇГҐГ°ГўГ®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
 {
 	Node* add = start->next;
 	start->next = add->next;
@@ -76,21 +76,21 @@ void deleteFirstElem(Node* start, int& length) // удаление первого элемента
 
 }
 
-void addElem(Node* start, Node* end, int& length, int index) // добавление элемента по индексу
+void addElem(Node* start, Node* end, int& length, int index) // Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі
 {
 	
-	if (index == 0) { // если элемент хотят добавить на первое место
+	if (index == 0) { // ГҐГ±Г«ГЁ ГЅГ«ГҐГ¬ГҐГ­ГІ ГµГ®ГІГїГІ Г¤Г®ГЎГ ГўГЁГІГј Г­Г  ГЇГҐГ°ГўГ®ГҐ Г¬ГҐГ±ГІГ®
 		Node* add = new Node;
-		cout << "Введите значение нового элемента: ";
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г­Г®ГўГ®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ : ";
 		int element;
 		cin >> element;
 		addFirstElem(add, start, length, element);
 	}
 	else if ((index < length) and (index > 0)) {
 		int element;
-		cout << "Введите значение нового элемента: ";
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г­Г®ГўГ®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ : ";
 		cin >> element;
-		if (index < ceil(length / 2)) { // divide and conquer method (если индекс меньше среднего, идем с начала)
+		if (index < ceil(length / 2)) { // divide and conquer method (ГҐГ±Г«ГЁ ГЁГ­Г¤ГҐГЄГ± Г¬ГҐГ­ГјГёГҐ Г±Г°ГҐГ¤Г­ГҐГЈГ®, ГЁГ¤ГҐГ¬ Г± Г­Г Г·Г Г«Г )
 			Node* add = start->next;
 			for (int i = 1; i < index; i++) {
 				add = add->next;
@@ -102,7 +102,7 @@ void addElem(Node* start, Node* end, int& length, int index) // добавление элеме
 			add->next = addNew;
 			addNew->previous = add;
 		}
-		else { // если индекс больше среднего, идем с конца
+		else { // ГҐГ±Г«ГЁ ГЁГ­Г¤ГҐГЄГ± ГЎГ®Г«ГјГёГҐ Г±Г°ГҐГ¤Г­ГҐГЈГ®, ГЁГ¤ГҐГ¬ Г± ГЄГ®Г­Г¶Г 
 			Node* add = end->previous;
 			for (int i = 1; i < length - index; i++) {
 				add = add->previous;
@@ -117,13 +117,13 @@ void addElem(Node* start, Node* end, int& length, int index) // добавление элеме
 		length++;
 	}
 	else {
-		cout << "Ошибка, введен несуществующий индекс" << endl;
+		cout << "ГЋГёГЁГЎГЄГ , ГўГўГҐГ¤ГҐГ­ Г­ГҐГ±ГіГ№ГҐГ±ГІГўГіГѕГ№ГЁГ© ГЁГ­Г¤ГҐГЄГ±" << endl;
 	}
 }
 
-Node* getElem(Node* start, Node* end, int& length, int index) { // нахождение элемента по индексу
+Node* getElem(Node* start, Node* end, int& length, int index) { // Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі
 	if ((index < length) and (index >= 0)) {
-		cout << "Значение элемента по индексу " << index << ": ";
+		cout << "Г‡Г­Г Г·ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі " << index << ": ";
 
 		if (index < ceil(length / 2)) {
 			Node* add = start->next;
@@ -141,11 +141,11 @@ Node* getElem(Node* start, Node* end, int& length, int index) { // нахождение эл
 		}
 	}
 	else {
-		cout << "Ошибка, введен несуществующий индекс" << endl;
+		cout << "ГЋГёГЁГЎГЄГ , ГўГўГҐГ¤ГҐГ­ Г­ГҐГ±ГіГ№ГҐГ±ГІГўГіГѕГ№ГЁГ© ГЁГ­Г¤ГҐГЄГ±" << endl;
 	}
 }
 
-void delElem(Node* start, Node* end, int& length, int index) { // удаление элемента по индексу
+void delElem(Node* start, Node* end, int& length, int index) { // ГіГ¤Г Г«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі
 	if ((index < length) and (index >= 0)) {
 		if (index < ceil(length / 2)) {
 			Node* add = start->next;
@@ -169,12 +169,12 @@ void delElem(Node* start, Node* end, int& length, int index) { // удаление элеме
 	}
 	else
 	{
-		cout << "Ошибка, введен несуществующий индекс" << endl;
+		cout << "ГЋГёГЁГЎГЄГ , ГўГўГҐГ¤ГҐГ­ Г­ГҐГ±ГіГ№ГҐГ±ГІГўГіГѕГ№ГЁГ© ГЁГ­Г¤ГҐГЄГ±" << endl;
 	}
 
 }
 
-void clearList(Node* start, int& length) // очищение списка
+void clearList(Node* start, int& length) // Г®Г·ГЁГ№ГҐГ­ГЁГҐ Г±ГЇГЁГ±ГЄГ 
 {
 	Node* del = start->next;
 	while (length != 0) {
@@ -183,10 +183,10 @@ void clearList(Node* start, int& length) // очищение списка
 	
 }
 
-void replaceElem(Node* start, Node* end, int& length, int index) { // заменить элемент по индексу
+void replaceElem(Node* start, Node* end, int& length, int index) { // Г§Г Г¬ГҐГ­ГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі
 	if ((index < length) and (index >= 0)) {
 		int newElem;
-		cout << "Введите новое значение элемента: ";
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®ГўГ®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ : ";
 		cin >> newElem;
 
 		if (index < ceil(length / 2)) {
@@ -205,11 +205,11 @@ void replaceElem(Node* start, Node* end, int& length, int index) { // заменить э
 		}
 	}
 	else {
-		cout << "Ошибка, введен несуществующий индекс" << endl;
+		cout << "ГЋГёГЁГЎГЄГ , ГўГўГҐГ¤ГҐГ­ Г­ГҐГ±ГіГ№ГҐГ±ГІГўГіГѕГ№ГЁГ© ГЁГ­Г¤ГҐГЄГ±" << endl;
 	}
 }
 
-void reverseList(Node*& start, Node*& end, int& length) // переверот списка
+void reverseList(Node*& start, Node*& end, int& length) // ГЇГҐГ°ГҐГўГҐГ°Г®ГІ Г±ГЇГЁГ±ГЄГ 
 {
 	Node* add = start->next;
 	Node* temp = new Node;
@@ -231,9 +231,9 @@ void reverseList(Node*& start, Node*& end, int& length) // переверот списка
 	
 }
 
-void insertList(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endSecondList, int& lengthSecondList, int index) { // вставка другого списка по определенному индексу
+void insertList(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endSecondList, int& lengthSecondList, int index) { // ГўГ±ГІГ ГўГЄГ  Г¤Г°ГіГЈГ®ГЈГ® Г±ГЇГЁГ±ГЄГ  ГЇГ® Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­Г­Г®Г¬Гі ГЁГ­Г¤ГҐГЄГ±Гі
 	if ((index < length) and (index >= 0)) {
-		cout << "Значение элемента по индексу: " << index << endl;
+		cout << "Г‡Г­Г Г·ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі: " << index << endl;
 
 		if (index < ceil(length / 2)) {
 			Node* add = start->next;
@@ -260,11 +260,11 @@ void insertList(Node* start, Node* end, int& length, bool& inserted, Node* start
 		printList(start, length);
 	}
 	else {
-		cout << "Ошибка, введен несуществующий индекс" << endl;
+		cout << "ГЋГёГЁГЎГЄГ , ГўГўГҐГ¤ГҐГ­ Г­ГҐГ±ГіГ№ГҐГ±ГІГўГіГѕГ№ГЁГ© ГЁГ­Г¤ГҐГЄГ±" << endl;
 	}
 }
 
-void insertListLast(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endLastList, int& lengthSecondList) // вставка второго списка в конце
+void insertListLast(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endLastList, int& lengthSecondList) // ГўГ±ГІГ ГўГЄГ  ГўГІГ®Г°Г®ГЈГ® Г±ГЇГЁГ±ГЄГ  Гў ГЄГ®Г­Г¶ГҐ
 {
 	startSecondList->next->previous = end->previous;
 	end->previous->next = startSecondList->next;
@@ -275,7 +275,7 @@ void insertListLast(Node* start, Node* end, int& length, bool& inserted, Node* s
 	printList(start, length);
 }
 
-void insertListFirst(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endSecondList, int& lengthSecondList) // вставка второго списка в начале
+void insertListFirst(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endSecondList, int& lengthSecondList) // ГўГ±ГІГ ГўГЄГ  ГўГІГ®Г°Г®ГЈГ® Г±ГЇГЁГ±ГЄГ  Гў Г­Г Г·Г Г«ГҐ
 {
 	endSecondList->previous->next = start->next;
 	start->next->previous = endSecondList->previous;
@@ -286,7 +286,7 @@ void insertListFirst(Node* start, Node* end, int& length, bool& inserted, Node* 
 	printList(start, length);
 }
 
-int* containsSecondList(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) // проверка на содержание второго списка в основном 
+int* containsSecondList(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) // ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г±Г®Г¤ГҐГ°Г¦Г Г­ГЁГҐ ГўГІГ®Г°Г®ГЈГ® Г±ГЇГЁГ±ГЄГ  Гў Г®Г±Г­Г®ГўГ­Г®Г¬ 
 {
 	bool contains = false;
 	Node* curFirst = start->next;
@@ -316,40 +316,40 @@ int* containsSecondList(Node* start, Node* end, Node* startSecondList, Node* end
 		contains = true;
 	}
 	if (contains) {
-		cout << "Вставной список содержится в начальном" << endl;
+		cout << "Г‚Г±ГІГ ГўГ­Г®Г© Г±ГЇГЁГ±Г®ГЄ Г±Г®Г¤ГҐГ°Г¦ГЁГІГ±Гї Гў Г­Г Г·Г Г«ГјГ­Г®Г¬" << endl;
 		return indexes;
 	}
 	else {
-		cout << "Вставной список не содержится в начальном" << endl;
+		cout << "Г‚Г±ГІГ ГўГ­Г®Г© Г±ГЇГЁГ±Г®ГЄ Г­ГҐ Г±Г®Г¤ГҐГ°Г¦ГЁГІГ±Гї Гў Г­Г Г·Г Г«ГјГ­Г®Г¬" << endl;
 		return 0;
 	}
 }
 
-void getFirstEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) { // индекс первого вхождения второго списка в начальный
+void getFirstEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) { // ГЁГ­Г¤ГҐГЄГ± ГЇГҐГ°ГўГ®ГЈГ® ГўГµГ®Г¦Г¤ГҐГ­ГЁГї ГўГІГ®Г°Г®ГЈГ® Г±ГЇГЁГ±ГЄГ  Гў Г­Г Г·Г Г«ГјГ­Г»Г©
 	int* indexes = containsSecondList(start, end, startSecondList, endSecondList, length, lengthSecondList);
 
 	if (indexes != 0) {
-		cout << "Индекс первого вхождения второго списка в основной: " << indexes[0] << endl;
+		cout << "Г€Г­Г¤ГҐГЄГ± ГЇГҐГ°ГўГ®ГЈГ® ГўГµГ®Г¦Г¤ГҐГ­ГЁГї ГўГІГ®Г°Г®ГЈГ® Г±ГЇГЁГ±ГЄГ  Гў Г®Г±Г­Г®ГўГ­Г®Г©: " << indexes[0] << endl;
 	}
 	else {
-		cout << "Второй список не входит в основной" << endl;
+		cout << "Г‚ГІГ®Г°Г®Г© Г±ГЇГЁГ±Г®ГЄ Г­ГҐ ГўГµГ®Г¤ГЁГІ Гў Г®Г±Г­Г®ГўГ­Г®Г©" << endl;
 	}
 	
 }
 
-void getLastEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) // индекс последнего вхождения второго списка в начальный
+void getLastEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) // ГЁГ­Г¤ГҐГЄГ± ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ® ГўГµГ®Г¦Г¤ГҐГ­ГЁГї ГўГІГ®Г°Г®ГЈГ® Г±ГЇГЁГ±ГЄГ  Гў Г­Г Г·Г Г«ГјГ­Г»Г©
 {
 	int* indexes = containsSecondList(start, end, startSecondList, endSecondList, length, lengthSecondList);
 
 	if (indexes != 0) {
-		cout << "Индекс последнего вхождения второго списка в основной: " << indexes[lengthSecondList-1] << endl;
+		cout << "Г€Г­Г¤ГҐГЄГ± ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ® ГўГµГ®Г¦Г¤ГҐГ­ГЁГї ГўГІГ®Г°Г®ГЈГ® Г±ГЇГЁГ±ГЄГ  Гў Г®Г±Г­Г®ГўГ­Г®Г©: " << indexes[lengthSecondList-1] << endl;
 	}
 	else {
-		cout << "Второй список не входит в основной" << endl;
+		cout << "Г‚ГІГ®Г°Г®Г© Г±ГЇГЁГ±Г®ГЄ Г­ГҐ ГўГµГ®Г¤ГЁГІ Гў Г®Г±Г­Г®ГўГ­Г®Г©" << endl;
 	}
 }
 
-void swap(Node* start, Node* end, int& length, int indexFirst, int indexSecond) { // обмен элементов по индексам
+void swap(Node* start, Node* end, int& length, int indexFirst, int indexSecond) { // Г®ГЎГ¬ГҐГ­ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў ГЇГ® ГЁГ­Г¤ГҐГЄГ±Г Г¬
 	int temp;
 	Node* addFirst = getElem(start, end, length, indexFirst);
 	Node* addSecond = getElem(start, end, length, indexSecond);
@@ -362,17 +362,17 @@ void swap(Node* start, Node* end, int& length, int indexFirst, int indexSecond) 
 
 
 
-void checkLength(int length) // проверка на пустоту списка
+void checkLength(int length) // ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГіГ±ГІГ®ГІГі Г±ГЇГЁГ±ГЄГ 
 {
 	if (length == 0)
-		cout << "Список пустой"<<endl;
+		cout << "Г‘ГЇГЁГ±Г®ГЄ ГЇГіГ±ГІГ®Г©"<<endl;
 	else
-		cout << "Список не пустой"<<endl;
+		cout << "Г‘ГЇГЁГ±Г®ГЄ Г­ГҐ ГЇГіГ±ГІГ®Г©"<<endl;
 }
 
-void getLength(int length) // определение длины списка 
+void getLength(int length) // Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ Г¤Г«ГЁГ­Г» Г±ГЇГЁГ±ГЄГ  
 {
-	cout << "Длина списка: " << length << endl;
+	cout << "Г„Г«ГЁГ­Г  Г±ГЇГЁГ±ГЄГ : " << length << endl;
 }
 int main()
 {
@@ -393,10 +393,10 @@ int main()
 	int choiceBegin;
 	bool inserted = false;
 
-	cout << "Заполните второй список (для дальнейшей работы с двумя списками)" << endl << endl; // заполнение списка для дальнейшей вставки
+	cout << "Г‡Г ГЇГ®Г«Г­ГЁГІГҐ ГўГІГ®Г°Г®Г© Г±ГЇГЁГ±Г®ГЄ (Г¤Г«Гї Г¤Г Г«ГјГ­ГҐГ©ГёГҐГ© Г°Г ГЎГ®ГІГ» Г± Г¤ГўГіГ¬Гї Г±ГЇГЁГ±ГЄГ Г¬ГЁ)" << endl << endl; // Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г±ГЇГЁГ±ГЄГ  Г¤Г«Гї Г¤Г Г«ГјГ­ГҐГ©ГёГҐГ© ГўГ±ГІГ ГўГЄГЁ
 	if (lengthSecond == 0)
 	{
-		cout << "Введите первый элемент для добавления в список: ";
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЇГҐГ°ГўГ»Г© ГЅГ«ГҐГ¬ГҐГ­ГІ Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї Гў Г±ГЇГЁГ±Г®ГЄ: ";
 		cin >> firstElem;
 		add = new Node;
 		add->number = firstElem;
@@ -410,42 +410,42 @@ int main()
 
 	do {
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-		cout << "Выберите: " << endl;
-		cout << "1. Добавить элемент в конец" << endl;
-		cout << "2. Добавить элемент в начало" << endl;
-		cout << "3. Добавить элемент по индексу" << endl;
-		cout << "0. Закончить ввод и перейти к основному списку" << endl;
+		cout << "Г‚Г»ГЎГҐГ°ГЁГІГҐ: " << endl;
+		cout << "1. Г„Г®ГЎГ ГўГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ Гў ГЄГ®Г­ГҐГ¶" << endl;
+		cout << "2. Г„Г®ГЎГ ГўГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ Гў Г­Г Г·Г Г«Г®" << endl;
+		cout << "3. Г„Г®ГЎГ ГўГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі" << endl;
+		cout << "0. Г‡Г ГЄГ®Г­Г·ГЁГІГј ГўГўГ®Г¤ ГЁ ГЇГҐГ°ГҐГ©ГІГЁ ГЄ Г®Г±Г­Г®ГўГ­Г®Г¬Гі Г±ГЇГЁГ±ГЄГі" << endl;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		cin >> choiceBegin;
 		switch (choiceBegin)
 		{
 		case 1:
 			int lastElem;
-			cout << "Введите элемент для добавления: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЅГ«ГҐГ¬ГҐГ­ГІ Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї: ";
 			cin >> lastElem;
 			addLastElem(add, headSecond, tailSecond, lengthSecond, lastElem);
 			break;
 		case 2:
 			int newElem;
-			cout << "Введите элемент для добавления: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЅГ«ГҐГ¬ГҐГ­ГІ Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї: ";
 			cin >> newElem;
 			addFirstElem(add, headSecond, lengthSecond, newElem);
 			break;
 		case 3:
 			int getIndex;
-			cout << "Введите индекс для добавления: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ­Г¤ГҐГЄГ± Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї: ";
 			cin >> getIndex;
 			addElem(headSecond, tailSecond, lengthSecond, getIndex);
 			break;
 		}
 		printList(headSecond, lengthSecond);
 	} while (choiceBegin != 0);
-	cout << endl << "Основной список" << endl << endl;
+	cout << endl << "ГЋГ±Г­Г®ГўГ­Г®Г© Г±ГЇГЁГ±Г®ГЄ" << endl << endl;
 	do
 	{
 		if (lengthMain == 0)
 		{
-			cout << "Введите первый элемент для добавления в список: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЇГҐГ°ГўГ»Г© ГЅГ«ГҐГ¬ГҐГ­ГІ Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї Гў Г±ГЇГЁГ±Г®ГЄ: ";
 			cin >> firstElem;
 			add = new Node;
 			add->number = firstElem;
@@ -458,40 +458,40 @@ int main()
 		}
 
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-		cout << "Выберите действие: " << endl;
-		cout << "1. Добавить элемент в конец списка" << endl;
-		cout << "2. Добавить элемент в начало списка" << endl;
-		cout << "3. Удалить последний элемент списка" << endl;
-		cout << "4. Удалить первый элемент списка" << endl;
-		cout << "5. Добавить элемент по индексу" << endl;
-		cout << "6. Получить элемент по индексу" << endl;
-		cout << "7. Удалить элемент по индексу" << endl;
-		cout << "8. Получить размер списка" << endl;
-		cout << "9. Удалить все элементы списка" << endl;
-		cout << "10. Заменить элемент по индексу" << endl;
-		cout << "11. Проверка на пустоту списка" << endl;
-		cout << "12. Поменять порядок элементов на обратный" << endl;
-		cout << "13. Вставить список в список по индексу" << endl;
-		cout << "14. Вставить другой список в конец" << endl;
-		cout << "15. Вставить другой список в начало" << endl;
-		cout << "16. Проверить на содержание одного списка в другом" << endl;
-		cout << "17. Поиск первого вхождения списка в список" << endl;
-		cout << "18. Поиск последнего вхождения списка в список" << endl;
-		cout << "19. Обмен двух элементов списка по индексам" << endl;
-		cout << "0. Завершить работу" << endl;
+		cout << "Г‚Г»ГЎГҐГ°ГЁГІГҐ Г¤ГҐГ©Г±ГІГўГЁГҐ: " << endl;
+		cout << "1. Г„Г®ГЎГ ГўГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ Гў ГЄГ®Г­ГҐГ¶ Г±ГЇГЁГ±ГЄГ " << endl;
+		cout << "2. Г„Г®ГЎГ ГўГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ Гў Г­Г Г·Г Г«Г® Г±ГЇГЁГ±ГЄГ " << endl;
+		cout << "3. Г“Г¤Г Г«ГЁГІГј ГЇГ®Г±Г«ГҐГ¤Г­ГЁГ© ГЅГ«ГҐГ¬ГҐГ­ГІ Г±ГЇГЁГ±ГЄГ " << endl;
+		cout << "4. Г“Г¤Г Г«ГЁГІГј ГЇГҐГ°ГўГ»Г© ГЅГ«ГҐГ¬ГҐГ­ГІ Г±ГЇГЁГ±ГЄГ " << endl;
+		cout << "5. Г„Г®ГЎГ ГўГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі" << endl;
+		cout << "6. ГЏГ®Г«ГіГ·ГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі" << endl;
+		cout << "7. Г“Г¤Г Г«ГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі" << endl;
+		cout << "8. ГЏГ®Г«ГіГ·ГЁГІГј Г°Г Г§Г¬ГҐГ° Г±ГЇГЁГ±ГЄГ " << endl;
+		cout << "9. Г“Г¤Г Г«ГЁГІГј ГўГ±ГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ» Г±ГЇГЁГ±ГЄГ " << endl;
+		cout << "10. Г‡Г Г¬ГҐГ­ГЁГІГј ГЅГ«ГҐГ¬ГҐГ­ГІ ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі" << endl;
+		cout << "11. ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГіГ±ГІГ®ГІГі Г±ГЇГЁГ±ГЄГ " << endl;
+		cout << "12. ГЏГ®Г¬ГҐГ­ГїГІГј ГЇГ®Г°ГїГ¤Г®ГЄ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г­Г  Г®ГЎГ°Г ГІГ­Г»Г©" << endl;
+		cout << "13. Г‚Г±ГІГ ГўГЁГІГј Г±ГЇГЁГ±Г®ГЄ Гў Г±ГЇГЁГ±Г®ГЄ ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі" << endl;
+		cout << "14. Г‚Г±ГІГ ГўГЁГІГј Г¤Г°ГіГЈГ®Г© Г±ГЇГЁГ±Г®ГЄ Гў ГЄГ®Г­ГҐГ¶" << endl;
+		cout << "15. Г‚Г±ГІГ ГўГЁГІГј Г¤Г°ГіГЈГ®Г© Г±ГЇГЁГ±Г®ГЄ Гў Г­Г Г·Г Г«Г®" << endl;
+		cout << "16. ГЏГ°Г®ГўГҐГ°ГЁГІГј Г­Г  Г±Г®Г¤ГҐГ°Г¦Г Г­ГЁГҐ Г®Г¤Г­Г®ГЈГ® Г±ГЇГЁГ±ГЄГ  Гў Г¤Г°ГіГЈГ®Г¬" << endl;
+		cout << "17. ГЏГ®ГЁГ±ГЄ ГЇГҐГ°ГўГ®ГЈГ® ГўГµГ®Г¦Г¤ГҐГ­ГЁГї Г±ГЇГЁГ±ГЄГ  Гў Г±ГЇГЁГ±Г®ГЄ" << endl;
+		cout << "18. ГЏГ®ГЁГ±ГЄ ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ® ГўГµГ®Г¦Г¤ГҐГ­ГЁГї Г±ГЇГЁГ±ГЄГ  Гў Г±ГЇГЁГ±Г®ГЄ" << endl;
+		cout << "19. ГЋГЎГ¬ГҐГ­ Г¤ГўГіГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г±ГЇГЁГ±ГЄГ  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Г Г¬" << endl;
+		cout << "0. Г‡Г ГўГҐГ°ГёГЁГІГј Г°Г ГЎГ®ГІГі" << endl;
 		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		cin >> choice;
 		switch (choice)
 		{
 		case 1:
 			int lastElem;
-			cout << "Введите элемент для добавления: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЅГ«ГҐГ¬ГҐГ­ГІ Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї: ";
 			cin >> lastElem;
 			addLastElem(add, headMain, tailMain, lengthMain, lastElem);
 			break;
 		case 2:
 			int firstElem;
-			cout << "Введите элемент для добавления: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЅГ«ГҐГ¬ГҐГ­ГІ Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї: ";
 			cin >> firstElem;
 			addFirstElem(add, headMain, lengthMain, firstElem);
 			break;
@@ -502,20 +502,20 @@ int main()
 			deleteFirstElem(headMain, lengthMain);
 			break;
 		case 5:
-			cout << "Введите индекс для добавления: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ­Г¤ГҐГЄГ± Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї: ";
 			int indexAdd;
 			cin >> indexAdd;
-			addElem(headMain, tailMain, lengthMain, lengthMain - 1);
+			addElem(headMain, tailMain, lengthMain, indexAdd);
 			break;
 		case 6:
-			cout << "Введите индекс элемента для поиска: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ­Г¤ГҐГЄГ± ГЅГ«ГҐГ¬ГҐГ­ГІГ  Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ : ";
 			int findIndex;
 			cin >> findIndex;
 			add = getElem(headMain, tailMain, lengthMain, findIndex);
 			cout << add->number << endl;
 			break;
 		case 7:
-			cout << "Введите индекс для удаления: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ­Г¤ГҐГЄГ± Г¤Г«Гї ГіГ¤Г Г«ГҐГ­ГЁГї: ";
 			int delIndex;
 			cin >> delIndex;
 			delElem(headMain, tailMain, lengthMain, delIndex);
@@ -527,7 +527,7 @@ int main()
 			clearList(headMain, lengthMain);
 			break;
 		case 10:
-			cout << "Введите индекс элемента: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ­Г¤ГҐГЄГ± ГЅГ«ГҐГ¬ГҐГ­ГІГ : ";
 			cin >> findIndex;
 			replaceElem(headMain, tailMain, lengthMain, findIndex);
 			break;
@@ -538,10 +538,10 @@ int main()
 			reverseList(headMain, tailMain, lengthMain);
 			break;
 		case 13:
-			cout << "Введите индекс элемента, после которого вставить список: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ­Г¤ГҐГЄГ± ГЅГ«ГҐГ¬ГҐГ­ГІГ , ГЇГ®Г±Г«ГҐ ГЄГ®ГІГ®Г°Г®ГЈГ® ГўГ±ГІГ ГўГЁГІГј Г±ГЇГЁГ±Г®ГЄ: ";
 			int insertIndex;
 			cin >> insertIndex;
-			insertList(headMain, tailMain, lengthMain, inserted, headSecond, tailSecond, lengthSecond, lengthMain / 2);
+			insertList(headMain, tailMain, lengthMain, inserted, headSecond, tailSecond, lengthSecond, insertIndex);
 			break;
 		case 14:
 			insertListLast(headMain, tailMain, lengthMain, inserted, headSecond, tailSecond, lengthSecond);
@@ -559,7 +559,7 @@ int main()
 			getLastEntry(headMain, tailMain, headSecond, tailSecond, lengthMain, lengthSecond);
 			break;
 		case 19:
-			cout << "Введите индексы элементов для перестановки: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ­Г¤ГҐГЄГ±Г» ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¤Г«Гї ГЇГҐГ°ГҐГ±ГІГ Г­Г®ГўГЄГЁ: ";
 			int index1;
 			int index2;
 			cin >> index1;
