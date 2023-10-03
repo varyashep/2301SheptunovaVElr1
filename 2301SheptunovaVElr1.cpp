@@ -326,38 +326,6 @@ int* containsSecondList(Node* start, Node* end, Node* startSecondList, Node* end
 }
 
 void getFirstEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) { // индекс первого вхождения второго списка в начальный
-	/*Node* add = start;
-	int index = 0;
-	while (!(add->next == startSecondList->next)) {
-		index += 1;
-		add = add->next;
-	}
-
-	cout << "Индекс первого вхождения списка в список: " << index << endl;*/
-
-	/*bool contains = false;
-	Node* curFirst = start->next;
-	Node* curSecond = startSecondList->next;
-	int iterator = 0;
-	int* indexes = new int[lengthSecondList];
-	int index = 0;
-	while (iterator < lengthSecondList && curFirst->next != end->next) {
-		if (curFirst->number == curSecond->number) {
-			indexes[iterator] = index;
-			curSecond = curSecond->next;
-			curFirst = curFirst->next;
-			iterator++;
-			index++;
-		}
-		else {
-			if (iterator == 0) {
-				curFirst = curFirst->next;
-				index++;
-			}
-			iterator = 0;
-			curSecond = startSecondList->next;
-		}
-	}*/
 	int* indexes = containsSecondList(start, end, startSecondList, endSecondList, length, lengthSecondList);
 
 	if (indexes != 0) {
