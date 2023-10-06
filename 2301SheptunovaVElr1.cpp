@@ -65,7 +65,6 @@ void deleteLastElem(Node* start, Node* end, int& length)  // удаление последнего
 	length--;
 
 }
-
 void deleteFirstElem(Node* start, int& length) // удаление первого элемента
 {
 	Node* add = start->next;
@@ -145,7 +144,7 @@ Node* getElem(Node* start, Node* end, int& length, int index) { // нахождение эл
 }
 
 void delElem(Node* start, Node* end, int& length, int index) { // удаление элемента по индексу
-	
+
 	if ((index < length) and (index >= 0)) {
 		if (index < ceil(length / 2)) {
 			Node* add = start->next;
@@ -172,7 +171,6 @@ void delElem(Node* start, Node* end, int& length, int index) { // удаление элеме
 		cout << "Ошибка, введен несуществующий индекс" << endl;
 	}
 }
-
 void clearList(Node* start, int& length) // очищение списка
 {
 	Node* del = start->next;
@@ -204,7 +202,7 @@ void replaceElem(Node* start, Node* end, int& length, int index) { // заменить э
 	else {
 		cout << "Ошибка, введен несуществующий индекс" << endl;
 	}
-	
+
 }
 
 void reverseList(Node*& start, Node*& end, int& length) // переворот списка
@@ -228,7 +226,7 @@ void reverseList(Node*& start, Node*& end, int& length) // переворот списка
 }
 
 void insertList(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endSecondList, int& lengthSecondList, int index) { // вставка другого списка по определенному индексу
-	
+
 	if ((index < length) and (index >= 0)) {
 		cout << "Значение элемента по индексу: " << index << endl;
 
@@ -259,7 +257,7 @@ void insertList(Node* start, Node* end, int& length, bool& inserted, Node* start
 	else {
 		cout << "Ошибка, введен несуществующий индекс" << endl;
 	}
-	
+
 }
 
 void insertListLast(Node* start, Node* end, int& length, bool& inserted, Node* startSecondList, Node* endLastList, int& lengthSecondList) // вставка второго списка в конце
@@ -280,12 +278,12 @@ void insertListFirst(Node* start, Node* end, int& length, bool& inserted, Node* 
 	startSecondList->next->previous = start;
 	length += lengthSecondList;
 	inserted = true;
-	
+
 }
 
 int* containsSecondList(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) // проверка на содержание второго списка в основном 
 {
-	auto startTime = high_resolution_clock::now();
+
 	bool contains = false;
 	Node* curFirst = start->next;
 	Node* curSecond = startSecondList->next;
@@ -321,9 +319,8 @@ int* containsSecondList(Node* start, Node* end, Node* startSecondList, Node* end
 		cout << "Вставной список не содержится в начальном" << endl;
 		return 0;
 	}
-	
-}
 
+}
 void getFirstEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) { // индекс первого вхождения второго списка в начальный
 	int* indexes = containsSecondList(start, end, startSecondList, endSecondList, length, lengthSecondList);
 
@@ -333,7 +330,7 @@ void getFirstEntry(Node* start, Node* end, Node* startSecondList, Node* endSecon
 	else {
 		cout << "Второй список не входит в основной" << endl;
 	}
-	
+
 }
 
 void getLastEntry(Node* start, Node* end, Node* startSecondList, Node* endSecondList, int length, int lengthSecondList) // индекс последнего вхождения второго списка в начальный
@@ -341,7 +338,7 @@ void getLastEntry(Node* start, Node* end, Node* startSecondList, Node* endSecond
 	int* indexes = containsSecondList(start, end, startSecondList, endSecondList, length, lengthSecondList);
 
 	if (indexes != 0) {
-		cout << "Индекс последнего вхождения второго списка в основной: " << indexes[lengthSecondList-1] << endl;
+		cout << "Индекс последнего вхождения второго списка в основной: " << indexes[lengthSecondList - 1] << endl;
 	}
 	else {
 		cout << "Второй список не входит в основной" << endl;
@@ -360,17 +357,17 @@ void swap(Node* start, Node* end, int& length, int indexFirst, int indexSecond) 
 
 
 void checkLength(Node* start, Node* end) // проверка на пустоту списка
-{	
+{
 	Node* cur = start->next;
 	if (cur == end)
-		cout << "Список пустой"<<endl;
+		cout << "Список пустой" << endl;
 	else
-		cout << "Список не пустой"<<endl;
+		cout << "Список не пустой" << endl;
 }
 
 void getLength(Node* start, Node* end) // определение длины списка 
 {
-	auto startTime = high_resolution_clock::now();
+
 	int getLength = 1;
 	Node* cur = start->next;
 	while (cur->next != end) {
@@ -378,9 +375,7 @@ void getLength(Node* start, Node* end) // определение длины списка
 		cur = cur->next;
 	}
 	cout << "Длина списка: " << getLength << endl;
-	auto stop = high_resolution_clock::now();
-	auto duration = duration_cast<microseconds>(stop - startTime);
-	cout << "Время выполнения: " << duration.count() << endl;
+
 }
 int main()
 {
@@ -520,7 +515,7 @@ int main()
 			int findIndex;
 			cin >> findIndex;
 			add = getElem(headMain, tailMain, lengthMain, findIndex);
-			cout << "Значение элемента по индексу "<<findIndex<<": " << add->number << endl;
+			cout << "Значение элемента по индексу " << findIndex << ": " << add->number << endl;
 			break;
 		case 7:
 			cout << "Введите индекс для удаления: ";
